@@ -2,9 +2,13 @@ public class Main {
     public static void main(String[] args) {
 //        RomanToInteger13 romanNumber = new RomanToInteger13();
 //        System.out.println(romanNumber.romanToInt("MCMXCIV"));
-        String[] strs = {"flower","flow","flight"};
-        String[] strs2 = {"a"};
-        System.out.println(LongestCommonPrefix14.longestCommonPrefix(strs));
-        System.out.println(LongestCommonPrefix14.longestCommonPrefix(strs2));
+
+//        String[] strs = {"flower","flow","flight"};
+//        String[] strs2 = {"a"};
+//        System.out.println(LongestCommonPrefix14.longestCommonPrefix(strs));
+//        System.out.println(LongestCommonPrefix14.longestCommonPrefix(strs2));
+
+        System.out.println(FindTheIndexOfTheFirstOccurenceInAString28.strStr("sadbutsad", "sad"));
+        System.out.println(FindTheIndexOfTheFirstOccurenceInAString28.strStr("leetcode", "leeto"));
     }
 }
