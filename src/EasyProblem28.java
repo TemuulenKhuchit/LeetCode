@@ -1,4 +1,4 @@
-public class FindTheIndexOfTheFirstOccurenceInAString28 {
+public class EasyProblem28 {
     public static int strStr(String haystack, String needle) {
         if (!haystack.contains(needle)) {
             return -1;

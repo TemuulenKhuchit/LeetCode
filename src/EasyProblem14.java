@@ -1,4 +1,4 @@
-public class LongestCommonPrefix14 {
+public class EasyProblem14 {
     public static String longestCommonPrefix(String[] strs) {
         StringBuilder prefix = new StringBuilder();
         String minString = strs[0];

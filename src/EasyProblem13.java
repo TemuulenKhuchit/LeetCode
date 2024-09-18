@@ -1,4 +1,4 @@
-public class RomanToInteger13 {
+public class EasyProblem13 {
     public int romanToInt(String s) {
         int answer = 0, value;
 
