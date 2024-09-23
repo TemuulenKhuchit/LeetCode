@@ -1,10 +1,10 @@
 public class Easy3184 {
     public static int countCompleteDayPairs(int[] hours) {
-        byte[] counts = new byte[24];
-        byte totalPairs = 0;
+        int[] counts = new int[24];
+        int totalPairs = 0;
         for (int time : hours) {
-            totalPairs += counts[(byte)(24 - (byte)(time % 24)) % 24];
-            counts[(byte)(time % 24)]++;
+            totalPairs += counts[(24 - (time % 24)) % 24];
+            counts[time % 24]++;
         }
         return totalPairs;
     }
