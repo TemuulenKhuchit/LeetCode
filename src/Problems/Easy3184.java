@@ -1,3 +1,5 @@
+package Problems;
+
 public class Easy3184 {
     public static int countCompleteDayPairs(int[] hours) {
         int[] counts = new int[24];

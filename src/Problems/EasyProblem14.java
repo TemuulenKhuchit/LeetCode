@@ -1,3 +1,5 @@
+package Problems;
+
 public class EasyProblem14 {
     public static String longestCommonPrefix(String[] strs) {
         StringBuilder prefix = new StringBuilder();

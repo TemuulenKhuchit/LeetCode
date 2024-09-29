@@ -1,3 +1,5 @@
+package Problems;
+
 public class EasyProblem1684 {
     public static void main(String[] args) {
         String allowed = "abc";

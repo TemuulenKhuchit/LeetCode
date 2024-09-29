@@ -1,3 +1,5 @@
+package Problems;
+
 public class StrategyExampleDivideAndConquer {
     static int twoWayCounter = 0;
     static int threeWayCounter = 0;
