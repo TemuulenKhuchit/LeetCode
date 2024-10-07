@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MediumProblem179 {
+public class Medium179 {
     public String largestNumber(int[] nums) {
         List<Integer> list = Arrays.stream(nums).boxed().toList();
 
@@ -22,7 +22,7 @@ public class MediumProblem179 {
     }
 
     public static void main(String[] args) {
-        var a = new MediumProblem179();
+        var a = new Medium179();
         int[] nums = {0, 0};
         System.out.println(a.largestNumber(nums));
     }

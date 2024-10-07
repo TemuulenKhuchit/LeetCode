@@ -1,6 +1,6 @@
 package Problems;
 
-public class EasyProblem1684 {
+public class Easy1684 {
     public static void main(String[] args) {
         String allowed = "abc";
         String[] words = {"a","b","c","ab","ac","bc","abc"};

@@ -1,6 +1,6 @@
 package Problems;
 
-public class EasyProblem14 {
+public class Easy14 {
     public static String longestCommonPrefix(String[] strs) {
         StringBuilder prefix = new StringBuilder();
         String minString = strs[0];

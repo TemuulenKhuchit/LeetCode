@@ -1,6 +1,6 @@
 package Problems;
 
-public class EasyProblem13 {
+public class Easy13 {
     public int romanToInt(String s) {
         int answer = 0, value;
 

@@ -1,6 +1,6 @@
 package Problems;
 
-public class StrategyExampleDivideAndConquer {
+public class DSADivideAndConquer {
     static int twoWayCounter = 0;
     static int threeWayCounter = 0;
 
@@ -22,7 +22,7 @@ public class StrategyExampleDivideAndConquer {
         if (i == j)
             return array[i];
 
-        StrategyExampleDivideAndConquer.twoWayCounter++;
+        DSADivideAndConquer.twoWayCounter++;
         int mid = (i + j) / 2;
 
         return Math.max(

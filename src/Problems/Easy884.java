@@ -2,7 +2,7 @@ package Problems;
 
 import java.util.*;
 
-public class EasyProblem884 {
+public class Easy884 {
     public String[] uncommonFromSentences(String s1, String s2) {
         String s = s1 + " " + s2;
         String[] sentence = s.split(" ");
@@ -22,7 +22,7 @@ public class EasyProblem884 {
     }
 
     public static void main(String[] args) {
-        var prob = new EasyProblem884();
+        var prob = new Easy884();
         String s1 = "this apple is sweet";
         String s2 = "this apple is sour";
         System.out.println(Arrays.toString(prob.uncommonFromSentences(s1, s2)));
