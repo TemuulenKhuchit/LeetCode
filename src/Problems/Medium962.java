@@ -28,11 +28,9 @@ public class Medium962 {
         int n = nums.length;
         Deque<Integer> stack = new ArrayDeque<>();
 
-        for (int i = 0; i < n; i++) {
-            if (stack.isEmpty() || nums[i] < nums[stack.peek()]) {
+        for (int i = 0; i < n; i++)
+            if (stack.isEmpty() || nums[i] < nums[stack.peek()])
                 stack.push(i);
-            }
-        }
 
         int maxWidth = 0;
         for (int j = n - 1; j >= 0; j--) {
