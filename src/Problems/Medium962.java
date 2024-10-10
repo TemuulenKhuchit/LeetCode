@@ -43,5 +43,4 @@ public class Medium962 {
         return maxWidth;
     }
 
-
 }
