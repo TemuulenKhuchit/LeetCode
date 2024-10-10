@@ -13,18 +13,33 @@ public class Medium962 {
         maxWidthRamp(new int[]{2, 7, 2, 2, 7});
     }
 
-    public static int maxWidthRamp2(int[] nums) {
-        int max = 0;
+    //    Log n
+    public static int maxWidthRamp(int[] nums) {
+        int low = 1, high = nums.length - 1, res = 0;
 
-        for (int i = 0; i < nums.length; i++)
-            for (int j = i + 1; j < nums.length; j++)
-                if (nums[i] <= nums[j] && nums[j] - nums[i] >= 0)
-                    max = Math.max(max, j - i);
-
-        return max;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (possible(nums, mid)) {
+                res = mid;
+                low = mid + 1;
+            } else high = mid - 1;
+        }
+        return res;
     }
 
-    public static int maxWidthRamp(int[] nums) {
+    private static boolean possible(int[] nums, int width) {
+        int i = 0, j = width;
+        int min = nums[i];
+        while (j < nums.length) {
+            if (nums[j] >= min) return true;
+            j++;
+            min = Math.min(min, nums[++i]);
+        }
+        return false;
+    }
+
+    //    O(n)
+    public static int maxWidthRamp2(int[] nums) {
         int n = nums.length;
         Deque<Integer> stack = new ArrayDeque<>();
 
@@ -41,6 +56,18 @@ public class Medium962 {
         }
 
         return maxWidth;
+    }
+
+    //    O(n*n)
+    public static int maxWidthRamp3(int[] nums) {
+        int max = 0;
+
+        for (int i = 0; i < nums.length; i++)
+            for (int j = i + 1; j < nums.length; j++)
+                if (nums[i] <= nums[j] && nums[j] - nums[i] >= 0)
+                    max = Math.max(max, j - i);
+
+        return max;
     }
 
 }
