@@ -1,5 +1,7 @@
 package Problems;
 
+import java.util.*;
+
 public class Medium1942 {
 
     public static void main(String[] args) {
@@ -9,10 +11,18 @@ public class Medium1942 {
 
     public static int smallestChair(int[][] times, int targetFriend) {
         int result = 0;
+        int[] target = times[targetFriend];
 
+        Arrays.sort(times, Comparator.comparing(n -> n[0]));
 
+        Queue<Integer> pq = new PriorityQueue<>();
 
-        System.out.println(result);
+        for (int i = 0; i <= target[0]; i++) {
+//            if (times[])
+        }
+
+        System.out.println(Arrays.deepToString(times));
+
         return result;
     }
 
