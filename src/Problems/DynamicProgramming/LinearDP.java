@@ -63,16 +63,18 @@ public class LinearDP {
 
     // Easy 121. Best Time to Buy and Sell Stock
     public int maxProfit(int[] prices) {
-        int n = prices.length;
-        if (n == 1) return 0;
+        if (prices.length == 1)
+            return 0;
 
-        int[] dp = new int[n + 1];
+        int[] dp = new int[prices.length];
+        int min = prices[0];
 
-        for (int i = 0; i < n; i++)
-            for (int j = i + 1; j <= n; j++)
-                dp[j] = Math.max(prices[j - 1] - prices[i], Math.max(dp[j], dp[j - 1]));
+        for (int i = 1; i < prices.length; i++) {
+            dp[i] = Math.max(dp[i - 1], prices[i] - min);
+            min = Math.min(min, prices[i]);
+        }
 
-        return dp[n];
+        return dp[prices.length - 1];
     }
 
     // Easy 746. Min Cost Climbing Stairs
