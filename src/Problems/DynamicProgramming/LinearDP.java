@@ -85,7 +85,7 @@ public class LinearDP {
         return 0;
     }
 
-    // 91. Decode Ways
+    // Medium 91. Decode Ways
     public static class DecodeWays {
         static Map<Integer, Integer> memo = new HashMap<>();
 
