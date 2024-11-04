@@ -1,21 +1,22 @@
 package Problems.DynamicProgramming;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LinearDP {
 
     public static void main(String[] args) {
-        LinearDP ldp = new LinearDP();
-
-//        ldp.climbStairs(3);
-//        ldp.fib(25);
-//        ldp.tribonacci(25);
-        ldp.maxProfit(new int[]{7, 1, 5, 3, 6, 4});
-//        ldp.minCostClimbingStairs(new int[]{10, 15, 20});
+//        climbStairs(3);
+//        fib(25);
+//        tribonacci(25);
+//        maxProfit(new int[]{7, 1, 5, 3, 6, 4});
+//        minCostClimbingStairs(new int[]{10, 15, 20});
+        DecodeWays.numDecodings("11106");
     }
 
     // Easy 70. Climbing Stairs
-    public int climbStairs(int n) {
+    public static int climbStairs(int n) {
         if (n == 1) return 1;
 
         int[] dp = new int[n + 1];
@@ -30,7 +31,7 @@ public class LinearDP {
     }
 
     // Easy 509. Fibonacci Number
-    public int fib(int n) {
+    public static int fib(int n) {
         if (n == 0) return 0;
 
         int[] dp = new int[n + 1];
@@ -45,7 +46,7 @@ public class LinearDP {
     }
 
     // Easy 1137. N-th Tribonacci Number
-    public int tribonacci(int n) {
+    public static int tribonacci(int n) {
         if (n == 0) return 0;
         if (n == 1) return 1;
 
@@ -62,7 +63,7 @@ public class LinearDP {
     }
 
     // Easy 121. Best Time to Buy and Sell Stock
-    public int maxProfit(int[] prices) {
+    public static int maxProfit(int[] prices) {
         if (prices.length == 1)
             return 0;
 
@@ -78,10 +79,42 @@ public class LinearDP {
     }
 
     // Easy 746. Min Cost Climbing Stairs
-    public int minCostClimbingStairs(int[] cost) {
+    public static int minCostClimbingStairs(int[] cost) {
 
 
         return 0;
+    }
+
+    // 91. Decode Ways
+    public static class DecodeWays {
+        static Map<Integer, Integer> memo = new HashMap<>();
+
+        public static int numDecodings(String s) {
+            return recursiveWithMemo(0, s);
+        }
+
+        private static int recursiveWithMemo(int index, String str) {
+            // Have we already seen this substring?
+            if (memo.containsKey(index)) return memo.get(index);
+
+            // If you reach the end of the string
+            // Return 1 for success.
+            if (index == str.length()) return 1;
+
+            // If the string starts with a zero, it can't be decoded
+            if (str.charAt(index) == '0') return 0;
+
+            if (index == str.length() - 1) return 1;
+
+            int ans = recursiveWithMemo(index + 1, str);
+            if (Integer.parseInt(str.substring(index, index + 2)) <= 26)
+                ans += recursiveWithMemo(index + 2, str);
+
+            // Save for memoization
+            memo.put(index, ans);
+
+            return ans;
+        }
     }
 
 }
