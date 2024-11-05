@@ -124,17 +124,17 @@ public class LinearDP {
 
         public static int numTrees(int n) {
             memo = new Integer[n + 1];
-            return recursiveNumTrees(n);
+            return depthFirstSearch(n);
         }
 
-        public static int recursiveNumTrees(int n) {
+        public static int depthFirstSearch(int n) {
             if (n < 2) return 1;
 
             if (memo[n] != null) return memo[n];
 
             int total = 0;
             for (int i = 1; i <= n; i++)
-                total += (recursiveNumTrees(i - 1) * recursiveNumTrees(n - i));
+                total += (depthFirstSearch(i - 1) * depthFirstSearch(n - i));
 
             memo[n] = total;
             return total;
