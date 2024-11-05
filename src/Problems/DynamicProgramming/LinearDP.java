@@ -13,7 +13,8 @@ public class LinearDP {
 //        maxProfit(new int[]{7, 1, 5, 3, 6, 4});
 //        minCostClimbingStairs(new int[]{10, 15, 20});
 //        DecodeWays.numDecodings("11106");
-        NumTrees.numTrees(6);
+        NumTreesMemo.numTrees(6);
+        NumTreesTabular(6);
     }
 
     // Easy 70. Climbing Stairs
@@ -119,7 +120,8 @@ public class LinearDP {
     }
 
     // Medium 96. Unique Binary Search Trees
-    public static class NumTrees {
+    // Top-Down Memoization approach
+    public static class NumTreesMemo {
         static Integer[] memo;
 
         public static int numTrees(int n) {
@@ -133,13 +135,41 @@ public class LinearDP {
             if (memo[n] != null) return memo[n];
 
             int total = 0;
-            for (int i = 1; i <= n; i++)
-                total += (depthFirstSearch(i - 1) * depthFirstSearch(n - i));
+            for (int i = 1; i <= n; i++) {
+                int leftNode = i - 1;
+                int leftTotal = depthFirstSearch(leftNode);
 
+                int rightNode = n - i;
+                int rightTotal = depthFirstSearch(rightNode);
+
+                total += (leftTotal * rightTotal);
+            }
             memo[n] = total;
             return total;
         }
 
     }
 
+    // Bottom-Up Tabular approach
+    public static int NumTreesTabular(int n){
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+
+        for (int i = 2; i <= n; i++) {
+            int total = 0;
+            for (int j = 1; j <= i; j++) {
+                int leftNode = j - 1;
+                int leftTotal = dp[leftNode];
+
+                int rightNode = i - j;
+                int rightTotal = dp[rightNode];
+
+                total += (leftTotal * rightTotal);
+            }
+            dp[i] = total;
+        }
+
+        return dp[n];
+    }
 }
