@@ -11,10 +11,14 @@ public class LinearDP {
 //        fib(25);
 //        tribonacci(25);
 //        maxProfit(new int[]{7, 1, 5, 3, 6, 4});
-//        minCostClimbingStairs(new int[]{10, 15, 20});
+//        MinCostClimbingStairs.minCostClimbingStairs(new int[]{10, 15, 20});
+//        MinCostClimbingStairs.minCostClimbingStairs(new int[]{1, 100, 1, 1, 1, 100, 1, 1, 100, 1});
+        minCostClimbingStairs(new int[]{10, 15, 20});
+        minCostClimbingStairs(new int[]{1, 100, 1, 1, 1, 100, 1, 1, 100, 1});
 //        DecodeWays.numDecodings("11106");
-        NumTreesMemo.numTrees(6);
-        NumTreesTabular(6);
+//        NumTreesMemo.numTrees(6);
+//        NumTreesTabular(6);
+//        divisorGame(3);
     }
 
     // Easy 70. Climbing Stairs
@@ -81,10 +85,34 @@ public class LinearDP {
     }
 
     // Easy 746. Min Cost Climbing Stairs
+    // Top-Down Memoization approach
+    public static class MinCostClimbingStairs {
+        static Integer[] memo;
+
+        public static int minCostClimbingStairs(int[] cost) {
+            memo = new Integer[cost.length + 1];
+            return recMinCostClimbingStairs(cost.length + 1, cost);
+        }
+
+        public static int recMinCostClimbingStairs(int n, int[] cost) {
+            if (memo[n] != null) return memo[n];
+
+            memo[n] = cost[n] + Math.min(memo[n - 1], memo[n - 2]);
+
+            return memo[n];
+        }
+    }
+
+    // Bottom-Up Tabular approach
     public static int minCostClimbingStairs(int[] cost) {
+        int n = cost.length;
+        int[] dp = new int[n + 1];
+        dp[1] = cost[0];
 
+        for (int i = 2; i <= n; i++)
+            dp[i] += cost[i - 1] + Math.min(dp[i - 1], dp[i - 2]);
 
-        return 0;
+        return Math.min(dp[n], dp[n - 1]);
     }
 
     // Medium 91. Decode Ways
@@ -151,7 +179,7 @@ public class LinearDP {
     }
 
     // Bottom-Up Tabular approach
-    public static int NumTreesTabular(int n){
+    public static int NumTreesTabular(int n) {
         int[] dp = new int[n + 1];
         dp[0] = 1;
         dp[1] = 1;
@@ -171,5 +199,10 @@ public class LinearDP {
         }
 
         return dp[n];
+    }
+
+    // Easy 1025. Divisor Game
+    public static boolean divisorGame(int n) {
+        return n % 2 == 0;
     }
 }
