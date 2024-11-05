@@ -12,7 +12,8 @@ public class LinearDP {
 //        tribonacci(25);
 //        maxProfit(new int[]{7, 1, 5, 3, 6, 4});
 //        minCostClimbingStairs(new int[]{10, 15, 20});
-        DecodeWays.numDecodings("11106");
+//        DecodeWays.numDecodings("11106");
+        NumTrees.numTrees(6);
     }
 
     // Easy 70. Climbing Stairs
@@ -114,6 +115,29 @@ public class LinearDP {
             memo.put(index, ans);
 
             return ans;
+        }
+    }
+
+    // Medium 96. Unique Binary Search Trees
+    public static class NumTrees {
+        static Integer[] memo;
+
+        public static int numTrees(int n) {
+            memo = new Integer[n + 1];
+            return recursiveNumTrees(n);
+        }
+
+        public static int recursiveNumTrees(int n) {
+            if (n < 2) return 1;
+
+            if (memo[n] != null) return memo[n];
+
+            int total = 0;
+            for (int i = 1; i <= n; i++)
+                total += (recursiveNumTrees(i - 1) * recursiveNumTrees(n - i));
+
+            memo[n] = total;
+            return total;
         }
     }
 
