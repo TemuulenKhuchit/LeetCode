@@ -139,6 +139,7 @@ public class LinearDP {
             memo[n] = total;
             return total;
         }
+
     }
 
 }
