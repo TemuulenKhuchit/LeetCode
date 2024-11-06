@@ -1,6 +1,5 @@
 package Problems.DynamicProgramming;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,11 +12,11 @@ public class LinearDP {
 //        maxProfit(new int[]{7, 1, 5, 3, 6, 4});
 //        MinCostClimbingStairs.minCostClimbingStairs(new int[]{10, 15, 20});
 //        MinCostClimbingStairs.minCostClimbingStairs(new int[]{1, 100, 1, 1, 1, 100, 1, 1, 100, 1});
-        minCostClimbingStairs(new int[]{10, 15, 20});
-        minCostClimbingStairs(new int[]{1, 100, 1, 1, 1, 100, 1, 1, 100, 1});
+//        minCostClimbingStairs3(new int[]{10, 15, 20});
+//        minCostClimbingStairs3(new int[]{1, 100, 1, 1, 1, 100, 1, 1, 100, 1});
 //        DecodeWays.numDecodings("11106");
-//        NumTreesMemo.numTrees(6);
-//        NumTreesTabular(6);
+        NumTreesMemo.numTrees(6);
+        NumTreesTabular(6);
 //        divisorGame(3);
     }
 
@@ -84,26 +83,13 @@ public class LinearDP {
         return dp[prices.length - 1];
     }
 
-    // Easy 746. Min Cost Climbing Stairs
-    // Top-Down Memoization approach
-    public static class MinCostClimbingStairs {
-        static Integer[] memo;
-
-        public static int minCostClimbingStairs(int[] cost) {
-            memo = new Integer[cost.length + 1];
-            return recMinCostClimbingStairs(cost.length + 1, cost);
-        }
-
-        public static int recMinCostClimbingStairs(int n, int[] cost) {
-            if (memo[n] != null) return memo[n];
-
-            memo[n] = cost[n] + Math.min(memo[n - 1], memo[n - 2]);
-
-            return memo[n];
-        }
+    // Easy 1025. Divisor Game
+    public static boolean divisorGame(int n) {
+        return n % 2 == 0;
     }
 
-    // Bottom-Up Tabular approach
+    // Easy 746. Min Cost Climbing Stairs
+    // Approach 1: Bottom-Up Dynamic Programming (Tabulation)
     public static int minCostClimbingStairs(int[] cost) {
         int n = cost.length;
         int[] dp = new int[n + 1];
@@ -117,7 +103,43 @@ public class LinearDP {
         return dp[n];
     }
 
-    // Medium 91. Decode Ways
+    // Approach 2: Top-Down Dynamic Programming (Recursion + Memoization)
+    public static class MinCostClimbingStairs {
+        static Map<Integer, Integer> memo = new HashMap<>();
+
+        public static int minCostClimbingStairs(int[] cost) {
+            System.out.println(recMinCostClimbingStairs(cost.length, cost));
+            return recMinCostClimbingStairs(cost.length, cost);
+        }
+
+        public static int recMinCostClimbingStairs(int n, int[] cost) {
+            if (n < 2) return 0;
+
+            if (memo.containsKey(n)) return memo.get(n);
+
+            int step1 = cost[n - 1] + recMinCostClimbingStairs(n - 1, cost);
+            int step2 = cost[n - 2] + recMinCostClimbingStairs(n - 2, cost);
+            memo.put(n, Math.min(step1, step2));
+
+            return memo.get(n);
+        }
+    }
+
+    // Approach 3: Bottom-Up, Constant Space
+    public static int minCostClimbingStairs3(int[] cost) {
+        int step1 = 0;
+        int step2 = 0;
+
+        for (int i = 2; i <= cost.length; i++) {
+            int temp = step1;
+            step1 = Math.min(step1 + cost[i - 1], step2 + cost[i - 2]);
+            step2 = temp;
+        }
+
+        return step1;
+    }
+
+    // Medium 91. Decode Ways (Memoization)
     public static class DecodeWays {
         static Map<Integer, Integer> memo = new HashMap<>();
 
@@ -156,10 +178,10 @@ public class LinearDP {
 
         public static int numTrees(int n) {
             memo = new Integer[n + 1];
-            return depthFirstSearch(n);
+            return recNumTrees(n);
         }
 
-        public static int depthFirstSearch(int n) {
+        public static int recNumTrees(int n) {
             if (n < 2) return 1;
 
             if (memo[n] != null) return memo[n];
@@ -167,10 +189,10 @@ public class LinearDP {
             int total = 0;
             for (int i = 1; i <= n; i++) {
                 int leftNode = i - 1;
-                int leftTotal = depthFirstSearch(leftNode);
+                int leftTotal = recNumTrees(leftNode);
 
                 int rightNode = n - i;
-                int rightTotal = depthFirstSearch(rightNode);
+                int rightTotal = recNumTrees(rightNode);
 
                 total += (leftTotal * rightTotal);
             }
@@ -201,10 +223,5 @@ public class LinearDP {
         }
 
         return dp[n];
-    }
-
-    // Easy 1025. Divisor Game
-    public static boolean divisorGame(int n) {
-        return n % 2 == 0;
     }
 }
