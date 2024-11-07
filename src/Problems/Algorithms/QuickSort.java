@@ -25,10 +25,11 @@ public class QuickSort {
     public static int partition(int[] arr, int low, int high) {
         // Median of three pivot selection
         int mid = low + (high - low) / 2;
-        int pivot = medianOfThree(arr, low, mid, high);
+        int pivotIndex = medianOfThreeIndex(arr, low, mid, high);
+        int pivot = arr[pivotIndex];
 
         // Swap pivot with the last element
-        swap(arr, mid, high);
+        swap(arr, pivotIndex, high);
 
         int i = low - 1;
         for (int j = low; j < high; j++) {
@@ -42,13 +43,13 @@ public class QuickSort {
         return i + 1;
     }
 
-    public static int medianOfThree(int[] arr, int low, int mid, int high) {
+    public static int medianOfThreeIndex(int[] arr, int low, int mid, int high) {
         if ((arr[low] > arr[mid]) != (arr[low] > arr[high])) {
-            return arr[low];
+            return low;
         } else if ((arr[mid] > arr[low]) != (arr[mid] > arr[high])) {
-            return arr[mid];
+            return mid;
         } else {
-            return arr[high];
+            return high;
         }
     }
 
