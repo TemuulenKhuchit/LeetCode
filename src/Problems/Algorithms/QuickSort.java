@@ -6,10 +6,8 @@ public class QuickSort {
         int[] array = {10, 7, 1, 8, 2, 6, 4, 3, 9, 8};
         quickSort(array, 0, array.length - 1);
 
-        // Print sorted array
-        for (int num : array) {
+        for (int num : array)
             System.out.print(num + " ");
-        }
     }
 
     public static void quickSort(int[] arr, int low, int high) {
