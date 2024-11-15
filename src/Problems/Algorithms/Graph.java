@@ -65,7 +65,8 @@ public class Graph {
     public void print() {
         for (Node source : adjacencyList.keySet()) {
             List<Node> targets = adjacencyList.get(source);
-            if (!targets.isEmpty()) System.out.println(source + " is connected to " + targets);
+            if (!targets.isEmpty())
+                System.out.println(source + " is connected to " + targets);
         }
     }
 
