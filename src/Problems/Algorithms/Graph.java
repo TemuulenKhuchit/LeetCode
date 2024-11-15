@@ -58,15 +58,13 @@ public class Graph {
         Node toNode = nodes.get(to);
         if (toNode == null) throw new IllegalArgumentException();
 
-        if (!adjacencyList.get(fromNode).contains(toNode))
-            adjacencyList.get(fromNode).add(toNode);
+        if (!adjacencyList.get(fromNode).contains(toNode)) adjacencyList.get(fromNode).add(toNode);
     }
 
     public void print() {
         for (Node source : adjacencyList.keySet()) {
             List<Node> targets = adjacencyList.get(source);
-            if (!targets.isEmpty())
-                System.out.println(source + " is connected to " + targets);
+            if (!targets.isEmpty()) System.out.println(source + " is connected to " + targets);
         }
     }
 
@@ -158,7 +156,8 @@ public class Graph {
             topologicalSort(node, visited, stack);
 
         List<String> sorted = new ArrayList<>();
-        while (!stack.empty()) sorted.add(stack.pop().label);
+        while (!stack.empty())
+            sorted.add(stack.pop().label);
 
         return sorted;
     }
@@ -183,8 +182,7 @@ public class Graph {
 
         while (!all.isEmpty()) {
             var current = all.iterator().next();
-            if (hasCycle(current, all, visiting, visited))
-                return true;
+            if (hasCycle(current, all, visiting, visited)) return true;
         }
 
         return false;
@@ -195,14 +193,11 @@ public class Graph {
         visiting.add(node);
 
         for (var neighbor : adjacencyList.get(node)) {
-            if (visited.contains(neighbor))
-                continue;
+            if (visited.contains(neighbor)) continue;
 
-            if (visiting.contains(neighbor))
-                return true;
+            if (visiting.contains(neighbor)) return true;
 
-            if (hasCycle(neighbor, all, visiting, visited))
-                return true;
+            if (hasCycle(neighbor, all, visiting, visited)) return true;
         }
 
         visiting.remove(node);

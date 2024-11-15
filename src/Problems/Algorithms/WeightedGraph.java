@@ -76,4 +76,6 @@ public class WeightedGraph {
             if (!edges.isEmpty()) System.out.println(node + " is connected to " + edges);
         }
     }
+
+
 }
