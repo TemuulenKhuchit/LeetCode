@@ -58,7 +58,8 @@ public class Graph {
         Node toNode = nodes.get(to);
         if (toNode == null) throw new IllegalArgumentException();
 
-        adjacencyList.get(fromNode).add(toNode);
+        if (!adjacencyList.get(fromNode).contains(toNode))
+            adjacencyList.get(fromNode).add(toNode);
     }
 
     public void print() {
