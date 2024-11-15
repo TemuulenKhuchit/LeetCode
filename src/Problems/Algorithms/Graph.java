@@ -9,13 +9,18 @@ public class Graph {
         graph.addNode("A");
         graph.addNode("B");
         graph.addNode("C");
+        graph.addNode("D");
         graph.addEdge("A", "B");
+        graph.addEdge("B", "D");
+        graph.addEdge("D", "C");
         graph.addEdge("A", "C");
 //        graph.removeNode("B");
 //        graph.removeEdge("A", "C");
 //        graph.addEdge("A", "C");
 //        graph.print();
-        graph.traverseDepthFirstRec("C");
+        graph.dfsRec("A");
+        System.out.println();
+        graph.dfsStack("A");
     }
 
     private class Node {
@@ -82,24 +87,24 @@ public class Graph {
         adjacencyList.get(fromNode).remove(toNode);
     }
 
-    public void traverseDepthFirstRec(String root) {
+    public void dfsRec(String root) {
         Node node = nodes.get(root);
         if (node == null)
             return;
 
-        traverseDepthFirstRec(node, new HashSet<>());
+        dfsRec(node, new HashSet<>());
     }
 
-    private void traverseDepthFirstRec(Node root, Set<Node> visited) {
-        System.out.println(root);
+    private void dfsRec(Node root, Set<Node> visited) {
+        System.out.print(root + ", ");
         visited.add(root);
 
         for (Node node : adjacencyList.get(root))
             if (!visited.contains(node))
-                traverseDepthFirstRec(node, visited);
+                dfsRec(node, visited);
     }
 
-    public void traverseDepthFirst(String root) {
+    public void dfsStack(String root) {
         Node node = nodes.get(root);
         if (node == null)
             return;
@@ -115,12 +120,12 @@ public class Graph {
             if (visited.contains(currentNode))
                 continue;
 
-            System.out.println(currentNode);
+            System.out.print(currentNode + ", ");
             visited.add(currentNode);
 
             for (Node neighbor : adjacencyList.get(currentNode))
                 if (!visited.contains(neighbor))
-                    stack.push(currentNode);
+                    stack.push(neighbor);
         }
     }
 
