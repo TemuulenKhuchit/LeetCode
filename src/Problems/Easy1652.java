@@ -3,13 +3,14 @@ package Problems;
 import java.util.Arrays;
 
 public class Easy1652 {
-    // Easy 1652. Defuse the Bomb
+
     public static void main(String[] args) {
         decrypt(new int[]{5, 7, 1, 4}, 3);
         decrypt(new int[]{1, 2, 3, 4}, 0);
         decrypt(new int[]{2, 4, 9, 3}, -2);
     }
 
+    // Easy 1652. Defuse the Bomb
     public static int[] decrypt(int[] code, int k) {
         int len = code.length;
         int[] res = new int[len];
