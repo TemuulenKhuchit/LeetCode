@@ -9,6 +9,7 @@ public class Medium419 {
         char[][] grid = {
                 {'X', '.', '.', 'X'},
                 {'.', '.', '.', 'X'},
+                {'.', '.', '.', 'X'},
                 {'.', '.', '.', 'X'}
         };
         medium419.countBattleships(grid);
