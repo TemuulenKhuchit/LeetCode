@@ -1,4 +1,4 @@
-package Problems;
+package Problems.Graph;
 
 import java.util.*;
 
