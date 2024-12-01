@@ -15,6 +15,7 @@ public class Easy1346 {
                     return true;
             }
         }
+
         return false;
     }
 }
