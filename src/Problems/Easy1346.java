@@ -2,7 +2,7 @@ package Problems;
 
 public class Easy1346 {
     public static void main(String[] args) {
-
+        checkIfExist(new int[]{7, 1, 14, 3});
     }
 
     // Easy 1346. Check If N and Its Double Exist
