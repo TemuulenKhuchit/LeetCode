@@ -20,7 +20,6 @@ public class Medium2109 {
         for (int i = 0; i < s.length() - spaces[spaces.length - 1]; i++)
             sb.append(s.charAt(i + spaces[spaces.length - 1]));
 
-        System.out.println(sb);
         return sb.toString();
     }
 }
