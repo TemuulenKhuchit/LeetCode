@@ -10,6 +10,7 @@ public class Medium2109 {
     public static String addSpaces(String s, int[] spaces) {
         StringBuilder sb = new StringBuilder();
         int leap = 0;
+
         for (int space : spaces) {
             for (int i = 0; i < space - leap; i++)
                 sb.append(s.charAt(i + leap));
