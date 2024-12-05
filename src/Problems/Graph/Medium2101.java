@@ -23,6 +23,7 @@ public class Medium2101 {
         for (int i = 0; i < bombs.length; i++)
 //            count = Math.max(count, bfs(bombs, i)); // BFS solution
             count = Math.max(count, dfs(bombs, i)); // DFS with stack solution
+
         return count;
     }
 
