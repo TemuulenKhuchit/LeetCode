@@ -14,7 +14,6 @@ public class Medium2554 {
     // Medium 2554. Maximum Number of Integers to Choose From a Range I
     public static int maxCount(int[] banned, int n, int maxSum) {
         int count = 0;
-        int sum = 0;
 
 //        HashSet<Integer> banSet = Arrays.stream(banned).boxed().collect(Collectors.toCollection(HashSet::new));
         Set<Integer> banSet = new HashSet<>();
@@ -25,8 +24,8 @@ public class Medium2554 {
         for (int i = 1; i <= n; i++) {
             if (banSet.contains(i))
                 continue;
-            if (sum + i <= maxSum) {
-                sum += i;
+            if (maxSum - i >= 0) {
+                maxSum -= i;
                 count++;
             }
             else return count;
