@@ -6,7 +6,7 @@ public class CountingRooms {
     static int n;
     static int m;
     static int[][] visited;
-    static char[][] map;
+    static char[][] grid;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -17,11 +17,11 @@ public class CountingRooms {
         m = Integer.parseInt(dimensions[1]);
 
         // Read the map lines into a 2D char array
-        map = new char[n][m];
+        grid = new char[n][m];
         for (int i = 0; i < n; i++) {
             String line = sc.nextLine();
             for (int j = 0; j < m; j++)
-                map[i][j] = line.charAt(j);
+                grid[i][j] = line.charAt(j);
         }
 
         int rooms = 0;
@@ -29,15 +29,11 @@ public class CountingRooms {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-//                System.out.print(map[i][j]);
-//                System.out.println(visited[i][j]);
-                if (visited[i][j] == 0 && map[i][j] == '.') {
+                if (visited[i][j] == 0 && grid[i][j] == '.') {
                     rooms++;
-//                    System.out.println("Found: i:" + i + " j:" + j);
                     dfs(i, j);
                 }
             }
-//            System.out.println("Found rooms: " + rooms);
         }
 
         System.out.println(rooms);
@@ -47,7 +43,7 @@ public class CountingRooms {
         if (row < 0 || col < 0 || row >= n || col >= m)
             return;
 
-        if (visited[row][col] == 1 || map[row][col] == '#')
+        if (visited[row][col] == 1 || grid[row][col] == '#')
             return;
 
         visited[row][col] = 1;
