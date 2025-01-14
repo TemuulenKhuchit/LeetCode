@@ -1,6 +1,7 @@
 package Problems.ArraysAndHashing;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -15,7 +16,7 @@ public class Easy242 {
     public static boolean isAnagram(String s, String t) {
         Map<Character, Integer> sMap = s.chars()
                 .mapToObj(ch -> (char) ch)
-                .collect(Collectors.toMap(c -> c, c -> 1, Integer::sum));
+                .collect(Collectors.toMap(ch -> ch, ch -> 1, Integer::sum));
 
         Map<Character, Integer> tMap = t.chars()
                 .mapToObj(ch -> (char) ch)
@@ -27,12 +28,29 @@ public class Easy242 {
             }
         }
 
-        for (Map.Entry<Character, Integer> sEntry : sMap.entrySet()) {
-            if (!tMap.containsKey(sEntry.getKey()) || !Objects.equals(sEntry.getValue(), tMap.getOrDefault(sEntry.getKey(), 0))) {
+        for (Map.Entry<Character, Integer> tEntry : tMap.entrySet()) {
+            if (!sMap.containsKey(tEntry.getKey()) || !Objects.equals(tEntry.getValue(), sMap.getOrDefault(tEntry.getKey(), 0))) {
                 return false;
             }
         }
 
+        return true;
+    }
+
+    public static boolean isAnagram2(String s, String t) {
+        Map<Character, Integer> sMap = new HashMap<>();
+        for (char c : s.toCharArray())
+            sMap.put(c, sMap.getOrDefault(c, 0) + 1);
+        for (char c : t.toCharArray()) {
+            if (!sMap.containsKey(c))
+                return false;
+            if (sMap.get(c) == 1)
+                sMap.remove(c);
+            else
+                sMap.put(c, sMap.get(c) - 1);
+        }
+        if (!sMap.isEmpty())
+            return false;
         return true;
     }
 
