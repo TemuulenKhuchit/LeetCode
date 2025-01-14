@@ -19,11 +19,9 @@ public class Easy217 {
 
     public static boolean containsDuplicate2(int[] nums) {
         Set<Integer> set = new HashSet<>();
-        for (int num : nums) {
-            if (set.contains(num))
+        for (int num : nums)
+            if (!set.add(num))
                 return true;
-            set.add(num);
-        }
         return false;
     }
 }
