@@ -1,6 +1,7 @@
 package Problems.ArraysAndHashing;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -14,5 +15,15 @@ public class Easy217 {
     public static boolean containsDuplicate(int[] nums) {
         Set<Integer> set = Arrays.stream(nums).boxed().collect(Collectors.toSet());
         return nums.length != set.size();
+    }
+
+    public static boolean containsDuplicate2(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (set.contains(num))
+                return true;
+            set.add(num);
+        }
+        return false;
     }
 }
