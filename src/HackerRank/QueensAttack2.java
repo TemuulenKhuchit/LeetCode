@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class QueensAttack {
+public class QueensAttack2 {
     public static int[][] dirs = {
             {1, -1},    // Up + Left
             {1, 0},     // Up
