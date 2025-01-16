@@ -1,10 +1,6 @@
 package Weekly.Contest427;
 
-import Problems.Algorithms.QuickSort;
-
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Question1 {
 
