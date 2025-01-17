@@ -1,9 +1,5 @@
 package LeetCode.TwoPointers;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 public class Easy345 {
 
     public static void main(String[] args) {
