@@ -1,4 +1,4 @@
-package LeetCode.Uncategorized;
+package LeetCode.TwoPointers;
 
 public class Easy125 {
 
@@ -25,5 +25,28 @@ public class Easy125 {
         }
 
         return true;
+    }
+
+    public static boolean isPalindrome2(String s) {
+        int n = s.length();
+        int start = 0;
+        int end = n - 1;
+        while (start < end) {
+            while (!isValid(s.charAt(start)) && start < n - 1)
+                start++;
+            while (!isValid(s.charAt(end)) && end > 0)
+                end--;
+            if (start >= n - 1 || end <= 0)
+                break;
+            if (Character.toLowerCase(s.charAt(start)) != Character.toLowerCase(s.charAt(end)))
+                return false;
+            start++;
+            end--;
+        }
+        return true;
+    }
+
+    public static boolean isValid(char c) {
+        return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');
     }
 }
