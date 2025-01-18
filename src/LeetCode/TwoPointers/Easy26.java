@@ -1,4 +1,4 @@
-package LeetCode.ArraysAndHashing;
+package LeetCode.TwoPointers;
 
 public class Easy26 {
 
