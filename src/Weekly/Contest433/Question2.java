@@ -5,22 +5,21 @@ import java.util.Arrays;
 public class Question2 {
 
     static final int MOD = 1000000007;
-    static long[] fact;      // factorials
-    static long[] invFact;   // inverse factorials (for binomial coefficients)
+    static long[] fact;
+    static long[] invFact;
 
     public static void main(String[] args) {
-        // Example usage / test:
         int[] nums1 = {1, 2, 3};
         int k1 = 2;
-        System.out.println(minMaxSums(nums1, k1)); // Expected 24
+        System.out.println(minMaxSums(nums1, k1));
 
         int[] nums2 = {5, 0, 6};
         int k2 = 1;
-        System.out.println(minMaxSums(nums2, k2)); // Expected 22
+        System.out.println(minMaxSums(nums2, k2));
 
         int[] nums3 = {1, 1, 1};
         int k3 = 2;
-        System.out.println(minMaxSums(nums3, k3)); // Expected 12
+        System.out.println(minMaxSums(nums3, k3));
 
     }
 
@@ -59,9 +58,6 @@ public class Question2 {
         return (int) result;
     }
 
-    /**
-     * Precompute factorials and inverse factorials up to n for fast binomial coefficients.
-     */
     private static void buildFactorials(int n) {
         fact = new long[n + 1];
         invFact = new long[n + 1];
@@ -73,17 +69,11 @@ public class Question2 {
             invFact[i] = (invFact[i + 1] * (i + 1)) % MOD;
     }
 
-    /**
-     * Computes nCr = n! / (r! * (n-r)!) in O(1), given precomputed factorials & inverses.
-     */
     private static long comb(int n, int r) {
         if (r < 0 || r > n) return 0;
         return fact[n] * ((invFact[r] * invFact[n - r]) % MOD) % MOD;
     }
 
-    /**
-     * Fast exponentiation (binary exponentiation) to compute (base^exp) % mod.
-     */
     private static long modExp(long base, long exp, int mod) {
         long result = 1;
         base = base % mod;
