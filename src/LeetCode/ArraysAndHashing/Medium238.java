@@ -40,13 +40,10 @@ public class Medium238 {
             answer[i] = answer[i - 1] * nums[i - 1];
 
         int right = 1;
-        int curr = 1;
         for (int i = n - 2; i >= 0; i--) {
-            curr = right * nums[i + 1];
-            answer[i] *= curr;
-            right = curr;
+            right *= nums[i + 1];
+            answer[i] *= right;
         }
-
         return answer;
     }
 }
