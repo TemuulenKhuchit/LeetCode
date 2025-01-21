@@ -24,6 +24,7 @@ public class Medium128 {
                 while (set.contains(currNum)) {
                     currStreak++;
                     currNum++;
+                    set.remove(num);
                 }
 
                 longest = Math.max(longest, currStreak);
