@@ -9,17 +9,14 @@ public class Medium424 {
     // Medium 424. Longest Repeating Character Replacement
     public static int characterReplacement(String s, int k) {
         int start = 0, end = 0;
-        int[] frequencyMap = new int[26];
-        int maxFrequency = 0;
+        int[] freqMap = new int[26];
+        int maxFreq = 0;
 
         for (end = 0; end < s.length(); end++) {
-            int currentChar = s.charAt(end) - 'A';
-            frequencyMap[currentChar]++;
-            maxFrequency = Math.max(maxFrequency, frequencyMap[currentChar]);
-
-            if (end - start + 1 - maxFrequency > k) {
-                int outgoingChar = s.charAt(start) - 'A';
-                frequencyMap[outgoingChar]--;
+            freqMap[s.charAt(end) - 'A']++;
+            maxFreq = Math.max(maxFreq, freqMap[s.charAt(end) - 'A']);
+            if (end - start + 1 - maxFreq > k) {
+                freqMap[s.charAt(start) - 'A']--;
                 start++;
             }
         }
