@@ -1,4 +1,4 @@
-package LeetCode.Stack;
+package LeetCode.Uncategorized;
 
 import java.util.ArrayList;
 import java.util.List;
