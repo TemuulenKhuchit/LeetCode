@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Medium155 {
 
+    // 155. Min Stack
     private int size = -1;
     private List<Integer> list = new ArrayList<>();
     private List<Integer> minValList = new ArrayList<>();
