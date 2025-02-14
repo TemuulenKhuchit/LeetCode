@@ -4,10 +4,6 @@ import java.util.Stack;
 
 public class Medium150 {
 
-    public static void main(String[] args) {
-
-    }
-
     // Medium 150. Evaluate Reverse Polish Notation
     public int evalRPN(String[] tokens) {
         Stack<Integer> stack = new Stack<>();
