@@ -32,8 +32,6 @@ public class Question3 {
             if (last[c] == -1)
                 continue;
             int start = first[c];
-            if (start != s.indexOf(s.charAt(start)))
-                continue;
             int end = last[c];
             int j = start;
             boolean valid = true;
