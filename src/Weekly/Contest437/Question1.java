@@ -19,13 +19,11 @@ public class Question1 {
                 j++;
             int count = j - i;
             if (count == k) {
-                if (i > 0 && s.charAt(i - 1) == c) {
-                }
-                else if (j < n && s.charAt(j) == c) {
-                }
-                else {
-                    return true;
-                }
+                if (i > 0 && s.charAt(i - 1) == c)
+                    continue;
+                if (j < n && s.charAt(j) == c)
+                    continue;
+                return true;
             }
             i = j;
         }
