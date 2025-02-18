@@ -14,6 +14,7 @@ public class Medium79 {
         System.out.println(obj.exist(board, word));
     }
 
+    // Medium 79. Word Search
     public boolean exist(char[][] board, String word) {
         this.board = board;
         this.word = word;
