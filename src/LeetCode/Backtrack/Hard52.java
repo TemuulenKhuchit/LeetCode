@@ -11,7 +11,7 @@ public class Hard52 {
         System.out.println(obj.totalNQueens(4));
     }
 
-    // 52. N-Queens II
+    // Hard 52. N-Queens II
     public int totalNQueens(int n) {
         return solve(0, 0, 0, 0, n);
     }
