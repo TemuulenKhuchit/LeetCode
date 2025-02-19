@@ -6,40 +6,27 @@ import java.util.List;
 import java.util.Set;
 
 public class Hard52 {
-    private int n;
-
     public static void main(String[] args) {
         Hard52 obj = new Hard52();
         System.out.println(obj.totalNQueens(4));
     }
 
-    // Hard 51. N-Queens
+    // 52. N-Queens II
     public int totalNQueens(int n) {
-        this.n = n;
-        return backtrack(0, new HashSet<>(), new HashSet<>(), new HashSet<>());
+        return solve(0, 0, 0, 0, n);
     }
 
-    private int backtrack(int row, Set<Integer> diags, Set<Integer> antiDiags, Set<Integer> cols) {
+    private int solve(int row, int cols, int diags, int antiDiags, int n) {
         if (row == n)
             return 1;
 
+        int availablePositions = ((1 << n) - 1) & ~(cols | diags | antiDiags);
+
         int solutions = 0;
-        for (int col = 0; col < n; col++) {
-            int currDiag = row - col;
-            int currAntiDiag = row + col;
-
-            if (diags.contains(currDiag) || antiDiags.contains(currAntiDiag) || cols.contains(col))
-                continue;
-
-            diags.add(currDiag);
-            antiDiags.add(currAntiDiag);
-            cols.add(col);
-
-            solutions += backtrack(row + 1, diags, antiDiags, cols);
-
-            diags.remove(currDiag);
-            antiDiags.remove(currAntiDiag);
-            cols.remove(col);
+        while (availablePositions != 0) {
+            int pos = availablePositions & -availablePositions;
+            availablePositions &= availablePositions - 1;
+            solutions += solve(row + 1, cols | pos, (diags | pos) << 1, (antiDiags | pos) >> 1, n);
         }
 
         return solutions;
