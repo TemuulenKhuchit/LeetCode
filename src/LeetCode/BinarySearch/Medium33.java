@@ -8,9 +8,8 @@ public class Medium33 {
 
     // Medium 33. Search in Rotated Sorted Array
     public static int search(int[] nums, int target) {
-        int n = nums.length;
         int lo = 0;
-        int hi = n - 1;
+        int hi = nums.length - 1;
 
         while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;
