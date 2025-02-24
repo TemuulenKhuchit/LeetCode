@@ -24,15 +24,15 @@ public class Easy94 {
     // Easy 94. Binary Tree Inorder Traversal
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        dfs(root, res);
+        traverse(root, res);
         return res;
     }
 
-    private void dfs(TreeNode root, List<Integer> res) {
+    private void traverse(TreeNode root, List<Integer> res) {
         if (root != null) {
-            dfs(root.left, res);
+            traverse(root.left, res);
             res.add(root.val);
-            dfs(root.right, res);
+            traverse(root.right, res);
         }
     }
 }
