@@ -24,15 +24,15 @@ public class Easy144 {
     // Easy 144. Binary Tree Preorder Traversal
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        dfs(root, res);
+        traverse(root, res);
         return res;
     }
 
-    private void dfs(TreeNode root, List<Integer> res) {
+    private void traverse(TreeNode root, List<Integer> res) {
         if (root != null) {
             res.add(root.val);
-            dfs(root.left, res);
-            dfs(root.right, res);
+            traverse(root.left, res);
+            traverse(root.right, res);
         }
     }
 }
