@@ -18,7 +18,7 @@ public class Easy104 {
         }
     }
 
-    // Easy 226. Invert Binary Tree
+    // Easy 104. Maximum Depth of Binary Tree
     public int maxDepth(TreeNode root) {
         if (root == null)
             return 0;
