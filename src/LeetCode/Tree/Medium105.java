@@ -42,8 +42,5 @@ public class Medium105 {
         root.right = arrayToTree(preorder, inorderIndexMap.get(rootValue) + 1, right);
 
         return root;
-
-        // Preorder: [3, 9, 20, 15, 7]
-        // Inorder:  [9, 3, 15, 20, 7]
     }
 }
