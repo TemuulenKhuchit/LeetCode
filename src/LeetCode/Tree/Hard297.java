@@ -33,7 +33,7 @@ public class Hard297 {
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
         String[] dataArr = data.split(",");
-        List<String> dataList = new ArrayList<>(Arrays.asList(dataArr));
+        List<String> dataList = new ArrayList<>(List.of(dataArr));
         return helperDeserialize(dataList);
     }
 
